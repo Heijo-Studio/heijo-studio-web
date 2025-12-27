@@ -1,12 +1,20 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"],
-   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "@astrojs/ts-plugin"
-      },
-    ],
-  }
+	"extends": "astro/tsconfigs/strict",
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": ["dist"],
+	"compilerOptions": {
+			"baseUrl": "./",
+	"paths": {
+		"@components/*": ["src/components/*"],
+		"@pages/*": ["src/pages/*"],
+		"@types/*": ["src/types/*"],
+		"@test/*": ["src/test/*"]
+	},
+		"plugins": [
+			{
+				"name": "@astrojs/ts-plugin"
+			}
+		]
+	},
+
 }
