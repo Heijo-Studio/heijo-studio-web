@@ -5,10 +5,12 @@ type Props = {
 };
 
 const { href, text } = Astro.props;
+const { pathname } = Astro.url;
+const isActive = pathname === href;
 ---
 
 <li
-  class="font-inter text-light-gray lowercase underline-offset-4 hover:underline"
+  class={`font-inter text-light-gray lowercase hover:underline underline-offset-4 ${isActive ? 'underline' : ''}`}
 >
   <a href={href}>{text}</a>
 </li>
