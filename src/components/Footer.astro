@@ -1,0 +1,35 @@
+---
+const navItems = [
+  { name: 'works', href: '/works' },
+  { name: 'about', href: '/about' },
+  { name: 'contact', href: '/contact' },
+  { name: 'store', href: '/store' },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="p-8">
+  <div class="container flex w-full max-w-full items-center justify-between">
+    <nav>
+      <ul class="flex items-center gap-x-6">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                class="font-inter text-light-gray text-sm lowercase"
+                href={item.href}
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <p class="font-inter text-light-gray text-xs">
+      © {currentYear} Heijo Studio. All rights reserved.
+    </p>
+  </div>
+</footer>
