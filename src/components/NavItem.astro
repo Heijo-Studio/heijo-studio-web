@@ -1,12 +1,14 @@
 ---
-interface Props {
+type Props = {
   href: string;
   text: string;
-}
+};
 
 const { href, text } = Astro.props;
 ---
 
-<li class="text-[#7B7B83] lowercase underline-offset-4 hover:underline">
+<li
+  class="font-inter text-light-gray lowercase underline-offset-4 hover:underline"
+>
   <a href={href}>{text}</a>
 </li>
