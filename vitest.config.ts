@@ -2,10 +2,10 @@
 import { getViteConfig } from 'astro/config';
 
 export default getViteConfig({
-	test: {
-		/* for example, use global to avoid globals imports (describe, test, expect): */
-		globals: true,
-		environment: 'happy-dom',
-		setupFiles: ['./src/test/setup.ts'],
-	},
+  test: {
+    /* for example, use global to avoid globals imports (describe, test, expect): */
+    globals: true,
+    environment: 'happy-dom',
+    setupFiles: ['./src/test/setup.ts'],
+  },
 });

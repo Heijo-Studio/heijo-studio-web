@@ -1,23 +1,24 @@
 ---
-import Logo from "./Logo.astro";
-import NavigationItem from "./NavigationItem.astro";
+import Logo from './Logo.astro';
+import NavigationItem from './NavigationItem.astro';
 
 const navItems = [
-  { name: "works", href: "/works", class: "text-[#7B7B83] lowercase" },
-  { name: "about", href: "/about" },
-  { name: "contact", href: "/contact" },
-  { name: "store", href: "/store" },
+  { name: 'works', href: '/works', class: 'text-[#7B7B83] lowercase' },
+  { name: 'about', href: '/about' },
+  { name: 'contact', href: '/contact' },
+  { name: 'store', href: '/store' },
 ];
-
 ---
 
-<header class="flex justify-between items-center w-full py-4 px-8">
+<header class="flex w-full items-center justify-between px-8 py-4">
   <Logo />
   <nav>
     <ul class="flex items-center gap-x-8">
-      {navItems.map((item) => (
-        <NavigationItem href={item.href} text={item.name} />
-      ))}
+      {
+        navItems.map((item) => (
+          <NavigationItem href={item.href} text={item.name} />
+        ))
+      }
     </ul>
   </nav>
 </header>
