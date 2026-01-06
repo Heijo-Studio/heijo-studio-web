@@ -1,13 +1,7 @@
 ---
+import { NAV_ITEMS } from 'src/constants';
 import Logo from './Logo.astro';
 import NavItem from './NavItem.astro';
-
-const navItems = [
-  { name: 'works', href: '/works' },
-  { name: 'about', href: '/about' },
-  { name: 'contact', href: '/contact' },
-  { name: 'store', href: '/store' },
-];
 ---
 
 <header
@@ -20,7 +14,7 @@ const navItems = [
 
     <nav>
       <ul class="flex items-center gap-x-8">
-        {navItems.map((item) => <NavItem href={item.href} text={item.name} />)}
+        {NAV_ITEMS.map((item) => <NavItem href={item.href} text={item.name} />)}
       </ul>
     </nav>
   </div>
