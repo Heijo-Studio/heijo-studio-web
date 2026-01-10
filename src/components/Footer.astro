@@ -1,20 +1,15 @@
 ---
-const navItems = [
-  { name: 'works', href: '/works' },
-  { name: 'about', href: '/about' },
-  { name: 'contact', href: '/contact' },
-  { name: 'store', href: '/store' },
-];
+import { NAV_ITEMS } from 'src/constants';
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="px-8 py-4">
+<footer class="w-full px-8 py-4">
   <div class="container flex w-full max-w-full items-center justify-between">
     <nav>
       <ul class="flex items-center gap-x-6">
         {
-          navItems.map((item) => (
+          NAV_ITEMS.map((item) => (
             <li>
               <a
                 class="font-inter text-light-gray text-sm lowercase"
