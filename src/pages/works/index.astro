@@ -1,12 +1,10 @@
 ---
+export const prerender = true;
+
 import MainLayout from '@layouts/MainLayout.astro';
 import { getAllCategories } from '@utils/collection';
 
 const categories = await getAllCategories();
-
-if (!categories || !categories.length) {
-  return null;
-}
 
 const firstCategory = categories[0];
 if (firstCategory) {
