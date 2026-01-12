@@ -12,6 +12,8 @@ export function getDynamicImageSrc(
     '/src/assets/images/works/**/*.{jpeg,jpg,png,gif,webp}',
   );
 
+  console.log(images);
+
   const normalizedPath = getNormalizedPath(path);
   if (normalizedPath && images[normalizedPath]) {
     return images[normalizedPath]();
