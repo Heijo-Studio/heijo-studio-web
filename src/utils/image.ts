@@ -15,6 +15,8 @@ export function getDynamicImageSrc(
   console.log(images);
 
   const normalizedPath = getNormalizedPath(path);
+  console.log(path, 'path');
+  console.log(normalizedPath, 'normalizedPath');
   if (normalizedPath && images[normalizedPath]) {
     return images[normalizedPath]();
   }
