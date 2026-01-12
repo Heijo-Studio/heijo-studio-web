@@ -23,7 +23,7 @@ const projects = await getWorksByCategory(Astro.params.category);
         projects.map((project) => (
           <ProjectItem
             title={project.data.title}
-            imagePath={project.data.thumbnail?.src ?? ''}
+            thumbnail={project.data.thumbnail}
           />
         ))
       }

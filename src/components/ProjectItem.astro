@@ -1,20 +1,18 @@
 ---
 import { Image } from 'astro:assets';
-import { getDynamicImageSrc } from '@utils/image';
 
 type Props = {
-  imagePath: string;
   title: string;
+  thumbnail?: ImageMetadata;
 };
 
-const { title, imagePath } = Astro.props;
-const imageSrc = getDynamicImageSrc(imagePath);
+const { title, thumbnail } = Astro.props;
 ---
 
 <article class="flex flex-col gap-y-3">
   {
-    imageSrc ? (
-      <Image src={imageSrc} alt={title} class="h-72.5 w-full object-cover" />
+    thumbnail ? (
+      <Image src={thumbnail} alt={title} class="h-72.5 w-full object-cover" />
     ) : (
       <div class="h-72.5 w-full bg-gray-200" />
     )
