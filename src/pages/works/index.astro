@@ -1,17 +1,22 @@
 ---
-import MainLayout from '@layouts/MainLayout.astro';
-import { getAllCategories } from '@utils/collection';
+import { getCollection } from 'astro:content';
+import ProjectItem from '@components/ProjectItem.astro';
+import WorksLayout from '@layouts/WorksLayout.astro';
 
-const categories = await getAllCategories();
-
-const firstCategory = categories[0];
-if (firstCategory) {
-  return Astro.redirect(`/works/${firstCategory}`);
-}
+const allWorks = await getCollection('works');
 ---
 
-<MainLayout>
-  <div class="flex h-full items-center justify-center">
-    <h1 class="font-inter text-lg">No categories found.</h1>
-  </div>
-</MainLayout>
+<WorksLayout>
+  <main>
+    <div class="grid grid-cols-1 gap-6 pb-8 sm:grid-cols-2 md:grid-cols-3">
+      {
+        allWorks.map((project) => (
+          <ProjectItem
+            title={project.data.title}
+            thumbnail={project.data.thumbnail}
+          />
+        ))
+      }
+    </div>
+  </main>
+</WorksLayout>

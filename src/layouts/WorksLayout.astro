@@ -6,10 +6,15 @@ const categories = await getAllCategories();
 ---
 
 <MainLayout>
-  <div class="mt-20 flex w-342.5 flex-1">
+  <div class="mt-24 flex w-342.5 flex-1">
     <div class="flex w-full flex-col gap-y-8">
       <nav>
         <ul class="flex items-center gap-x-8">
+          <li
+            class={`font-inter text-light-gray lowercase underline-offset-4 hover:underline`}
+          >
+            <a href={`/works`}>All</a>
+          </li>
           {
             categories.map((category) => (
               <li
