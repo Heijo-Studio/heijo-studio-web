@@ -1,0 +1,13 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../../types/project';
+
+type Props = {
+  image: Project['data']['thumbnail'];
+  title: string;
+};
+
+const { image, title } = Astro.props;
+---
+
+{image && <Image src={image} alt={title} class="h-[80%] w-full object-cover" />}

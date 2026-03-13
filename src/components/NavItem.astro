@@ -6,7 +6,7 @@ type Props = {
 
 const { href, text } = Astro.props;
 const { pathname } = Astro.url;
-const isActive = pathname === href;
+const isActive = pathname.includes(href);
 ---
 
 <li

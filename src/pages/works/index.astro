@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import ProjectItem from '@components/ProjectItem.astro';
+import ProjectItem from '@components/Works/ProjectItem.astro';
 import WorksLayout from '@layouts/WorksLayout.astro';
 
 const allWorks = await getCollection('works');
@@ -9,14 +9,7 @@ const allWorks = await getCollection('works');
 <WorksLayout>
   <main>
     <div class="grid grid-cols-1 gap-6 pb-8 sm:grid-cols-2 md:grid-cols-3">
-      {
-        allWorks.map((project) => (
-          <ProjectItem
-            title={project.data.title}
-            thumbnail={project.data.thumbnail}
-          />
-        ))
-      }
+      {allWorks.map((project) => <ProjectItem project={project} />)}
     </div>
   </main>
 </WorksLayout>

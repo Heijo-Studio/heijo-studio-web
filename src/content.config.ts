@@ -10,7 +10,16 @@ const works = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      tags: z.array(z.string()).optional(),
       thumbnail: image().optional(),
+      gallery: z
+        .array(
+          z.object({
+            image: image(),
+            // alt: z.string(),
+          }),
+        )
+        .optional(),
       size: z.string().optional(),
       design: z.string().optional(),
       construction: z.coerce.date().optional(),

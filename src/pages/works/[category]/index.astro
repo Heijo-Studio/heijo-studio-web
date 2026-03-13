@@ -1,7 +1,7 @@
 ---
 export const prerender = true;
 
-import ProjectItem from '@components/ProjectItem.astro';
+import ProjectItem from '@components/Works/ProjectItem.astro';
 import WorksLayout from '@layouts/WorksLayout.astro';
 import { getAllCategories, getWorksByCategory } from '@utils/collection';
 
@@ -19,14 +19,7 @@ const projects = await getWorksByCategory(Astro.params.category);
 <WorksLayout>
   <main>
     <div class="grid grid-cols-1 gap-6 pb-8 sm:grid-cols-2 md:grid-cols-3">
-      {
-        projects.map((project) => (
-          <ProjectItem
-            title={project.data.title}
-            thumbnail={project.data.thumbnail}
-          />
-        ))
-      }
+      {projects.map((project) => <ProjectItem project={project} />)}
     </div>
   </main>
 </WorksLayout>

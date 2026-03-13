@@ -1,0 +1,73 @@
+---
+import { Image } from 'astro:assets';
+import { getEntry, render } from 'astro:content';
+import MainLayout from '@layouts/MainLayout.astro';
+import ProjectSpecs from '@components/ProjectDetails/ProjectSpecs.astro';
+import Prose from '@components/ProjectDetails/Prose.astro';
+import Thumbnail from '@components/ProjectDetails/Thumbnail.astro';
+import Tag from '@components/ProjectDetails/Tag.astro';
+import Gallery from '@components/ProjectDetails/Gallery.astro';
+
+const { category, slug } = Astro.params;
+
+if (!category || !slug) {
+  throw new Error('Category and slug are required');
+}
+
+const entry = await getEntry('works', `${category}/${slug}`);
+if (!entry) {
+  return Astro.redirect('/404');
+}
+
+const { data } = entry;
+const {
+  title,
+  construction,
+  design,
+  tags,
+  location,
+  size,
+  thumbnail,
+  gallery,
+} = data;
+const { Content } = await render(entry);
+---
+
+<MainLayout>
+  <main class="mt-20 h-full w-full max-w-full overflow-auto">
+    <Thumbnail image={thumbnail} title={title} />
+
+    <div class="flex justify-center pt-4 pb-6">
+      <div class="max-w-342.5">
+        <h1 class="font-inter text-light-gray w-342.5 text-5xl font-medium">
+          {data.title}
+        </h1>
+      </div>
+    </div>
+
+    <div class="flex w-full justify-center">
+      <div class="flex w-342.5 justify-between gap-x-12 py-8">
+        <div class="flex w-1/2 flex-col gap-y-10">
+          <ProjectSpecs
+            construction={construction}
+            design={design}
+            location={location}
+            size={size}
+          />
+
+          <Prose>
+            <Content />
+          </Prose>
+
+          <div class="flex flex-wrap gap-x-5">
+            {tags?.map((tag) => <Tag text={tag} />)}
+          </div>
+        </div>
+
+        <div>
+          <Gallery items={gallery} />
+        </div>
+      </div>
+    </div>
+  </main>
+</MainLayout>

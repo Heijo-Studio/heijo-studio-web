@@ -26,6 +26,10 @@ export default config({
             description: 'This will define the file/folder name for this entry',
           },
         }),
+        tags: fields.array(fields.text({ label: 'Tag' }), {
+          label: 'Tags',
+          itemLabel: (props) => props.value,
+        }),
         thumbnail: fields.image({
           label: 'Thumbnail',
           directory: 'src/assets/images/works/architecture',
@@ -64,6 +68,10 @@ export default config({
             label: 'SEO-friendly slug',
             description: 'This will define the file/folder name for this entry',
           },
+        }),
+        tags: fields.array(fields.text({ label: 'Tag' }), {
+          label: 'Tags',
+          itemLabel: (props) => props.value,
         }),
         thumbnail: fields.image({
           label: 'Thumbnail',
@@ -104,6 +112,10 @@ export default config({
             description: 'This will define the file/folder name for this entry',
           },
         }),
+        tags: fields.array(fields.text({ label: 'Tag' }), {
+          label: 'Tags',
+          itemLabel: (props) => props.value,
+        }),
         thumbnail: fields.image({
           label: 'Thumbnail',
           directory: 'src/assets/images/works/interior',
@@ -142,6 +154,10 @@ export default config({
             label: 'SEO-friendly slug',
             description: 'This will define the file/folder name for this entry',
           },
+        }),
+        tags: fields.array(fields.text({ label: 'Tag' }), {
+          label: 'Tags',
+          itemLabel: (props) => props.value,
         }),
         thumbnail: fields.image({
           label: 'Thumbnail',
