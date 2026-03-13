@@ -17,3 +17,13 @@ export async function getWorksByCategory(category: string) {
 
   return allWorks;
 }
+
+export async function getWorkBySlug(category: string, slug: string) {
+  const allWorks = await getCollection('works', (entry) => {
+    const [entryCategory, ...slugParts] = entry.id.split('/');
+    const entrySlug = slugParts.join('/').replace(/\.(md|mdx)$/, '');
+    return entryCategory === category && entrySlug === slug;
+  });
+
+  return allWorks[0];
+}

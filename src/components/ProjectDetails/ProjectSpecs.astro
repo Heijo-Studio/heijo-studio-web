@@ -1,0 +1,25 @@
+---
+type Props = {
+  construction?: Date;
+  design?: string;
+  location?: string;
+  size?: string;
+};
+
+const { construction, design, location, size } = Astro.props;
+---
+
+<div>
+  <p class="text-light-gray font-inter text-base font-normal">
+    Location: {location ?? '-'}
+  </p>
+  <p class="text-light-gray font-inter text-base font-normal">
+    Size: {size ?? '-'}
+  </p>
+  <p class="text-light-gray font-inter text-base font-normal">
+    Design: {design ?? '-'}
+  </p>
+  <p class="text-light-gray font-inter text-base font-normal">
+    Construction: {construction?.toLocaleDateString() ?? '-'}
+  </p>
+</div>

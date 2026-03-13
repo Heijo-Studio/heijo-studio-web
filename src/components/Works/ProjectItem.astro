@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../../types/project';
+
+type Props = {
+  project: Project;
+};
+
+const { project } = Astro.props;
+const { title, thumbnail } = project.data;
+const [category, slug] = project.id.split('/');
+---
+
+<a
+  href={`/works/${category}/${slug}`}
+  class="flex cursor-pointer flex-col gap-y-3 underline-offset-4 hover:underline"
+>
+  {
+    thumbnail ? (
+      <Image src={thumbnail} alt={title} class="h-72.5 w-full object-cover" />
+    ) : (
+      <div class="h-72.5 w-full bg-gray-200" />
+    )
+  }
+
+  <p class="font-inter text-light-gray">
+    {title}
+  </p>
+</a>
