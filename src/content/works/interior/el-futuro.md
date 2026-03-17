@@ -1,5 +1,9 @@
 ---
 title: El Futuro
+tags:
+  - residential
+  - minimalist
+  - custom-made furniture
 thumbnail: '@assets/images/works/interior/el-futuro/thumbnail.jpg'
 gallery:
   - image: '@assets/images/works/interior/el-futuro/gallery/0/image.webp'
