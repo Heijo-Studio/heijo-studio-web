@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+
+type Props = {
+  class?: string;
+  placeholderText?: string;
+  src?: string | ImageMetadata;
+  alt?: string;
+  width?: number;
+  height?: number;
+};
+
+const {
+  class: className,
+  placeholderText = 'Image Placeholder',
+  src,
+  alt = '',
+  width,
+  height,
+} = Astro.props;
+---
+
+<div class:list={['max-w-full overflow-hidden bg-neutral-200', className]}>
+  {
+    src ? (
+      typeof src === 'string' ? (
+        <Image
+          src={src}
+          alt={alt}
+          width={width || 1200}
+          height={height || 800}
+          class="h-full w-full object-cover"
+        />
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          width={width || src.width}
+          height={height || src.height}
+          class="h-full w-full object-cover"
+        />
+      )
+    ) : (
+      <div class="flex h-full w-full items-center justify-center px-4 text-center">
+        <span class="font-inter text-sm text-neutral-400">
+          {placeholderText}
+        </span>
+      </div>
+    )
+  }
+</div>

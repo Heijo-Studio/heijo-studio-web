@@ -10,4 +10,12 @@ type Props = {
 const { image, title } = Astro.props;
 ---
 
-{image && <Image src={image} alt={title} class="h-[80%] w-full object-cover" />}
+{
+  image && (
+    <Image
+      src={image}
+      alt={title}
+      class="aspect-video w-full object-cover object-center"
+    />
+  )
+}

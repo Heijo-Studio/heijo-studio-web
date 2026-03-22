@@ -1,3 +1,152 @@
-<div>
-  <h1>About</h1>
-</div>
+---
+import Description from '@components/About/Description.astro';
+import Link from '@components/About/Link.astro';
+import MainTitle from '@components/About/MainTitle.astro';
+import Section from '@components/About/Section.astro';
+import Subtitle from '@components/About/Subtitle.astro';
+import Title from '@components/About/Title.astro';
+import Visual from '@components/About/Visual.astro';
+import MainLayout from '@layouts/MainLayout.astro';
+
+import heroImage from '@assets/images/about/about_hero.webp';
+import architectureImage from '@assets/images/about/about_architecture.webp';
+import interiorImage from '@assets/images/about/about_interior.webp';
+import installationImage from '@assets/images/about/about_installation.webp';
+import { Image } from 'astro:assets';
+---
+
+<MainLayout title="About | Heijo Studio">
+  <main class="w-full flex-1">
+    <picture>
+      <Image
+        src={heroImage}
+        alt="About hero"
+        class="h-212 w-full object-cover"
+      />
+    </picture>
+
+    <Section
+      imagePosition="right"
+      contentColSpan="md:col-span-5 lg:col-span-7"
+      visualColSpan="md:col-span-7 lg:col-span-5"
+      alignItems="start"
+    >
+      <MainTitle>We are HEIJO</MainTitle>
+
+      <div class="flex w-full gap-x-12">
+        <hr class="text-light-gray block w-30 self-end" />
+
+        <p class="font-inter text-light-gray w-75 text-2xl">
+          We connect the dots with multi-disciplinary design solutions to create
+          dialogue with end-users and the local context.
+        </p>
+      </div>
+
+      <Description slot="visual" class="mb-0">
+        <p>
+          We are an international design practice based in the Netherlands,
+          crafting solutions for architecture, interiors, installations and
+          spatial experimentation. We collaborate with a network of external
+          partners in Hong Kong China as an unique and self-steering collective.
+          Our works respond to diverse cultural, material, and spatial contexts
+          through upholding the core values of sustainability, stewardship and
+          circularity.
+        </p>
+        <p>
+          HeiJo Studio tackles design challenges in an agile way. Therefore, we
+          offer multi-disciplinary expertise to enhance the quality and
+          complexity of our deliverables, iterating solutions by reinforcing
+          feedbacks from our clients and site constraints.
+        </p>
+        <p>
+          The studio was founded by Wing Hei Hui Joanna. She received her Master
+          of Architecture from Delft University of Technology in the Netherlands
+          and a Bachelor from the Chinese University of Hong Kong. Before
+          starting the studio, she has practised in different architectural
+          firms between Hong Kong and the Netherlands. Therefore, as an
+          architectural designer, she is dedicated to infuse her multi-cultural
+          lens with the design process, transforming ideas into daily life.
+        </p>
+      </Description>
+    </Section>
+
+    <Section imagePosition="right">
+      <Title>Our service</Title>
+      <Subtitle class="font-normal"
+        >Architectural research-based design</Subtitle
+      >
+      <Description>
+        <p>
+          We develop architectural concepts that establish strong design
+          narratives and create dialogues with the immediate surroundings,
+          whether it is a public space, retail interior, residential or
+          exhibition space. We yearn to invent spatial solutions for our clients
+          and stakeholders, optimizing the design and resources collaboratively.
+          Our work focuses on early-phase design, feasibility studies, and
+          strategic concept development, including adaptive reuse strategy,
+          circular design framework and material flow analysis.
+        </p>
+      </Description>
+      <Link href="/works/architecture">
+        explore more architectural projects
+      </Link>
+      <Visual
+        slot="visual"
+        src={architectureImage}
+        width={475}
+        height={475}
+        class="w-full md:justify-start"
+      />
+    </Section>
+
+    <Section imagePosition="left">
+      <Subtitle>Interior design</Subtitle>
+      <Description>
+        <p>
+          Our team blends artistic creativity with engineering expertise,
+          specializing in residential, commercial, tea house, restaurants,
+          offices, exhibition spaces and multimedia space design. We believe
+          outstanding interior design meets functional needs, evokes emotional
+          connections, and enhances life quality. We ensure functionalism and
+          minimalism stand central in our projects.
+        </p>
+      </Description>
+      <Link href="/works/interior">
+        explore more interior design projects
+      </Link>
+      <Visual
+        slot="visual"
+        src={interiorImage}
+        width={600}
+        height={420}
+        class="md:justify-start"
+      />
+    </Section>
+
+    <Section imagePosition="left">
+      <Subtitle>Art and lighting installation</Subtitle>
+      <Description>
+        <p>
+          Our installation projects meet at the crossroad of art and
+          architecture. We blend visual creation with cutting-edge digital
+          technology to create audiovisual displays on buildings, interiors, and
+          public spaces. With the use of technologies such as projection
+          mapping, VR (Virtual Reality), AR (Augmented Reality) and Motion
+          Sensing Systems, immersive visual experiences are generated and static
+          environments are animated, engaging and inspiring viewers with
+          visually compelling narratives, movement and resonance.
+        </p>
+      </Description>
+      <Link href="/works/construction-engineering">
+        explore more installation projects
+      </Link>
+      <Visual
+        slot="visual"
+        src={installationImage}
+        width={600}
+        height={420}
+        class="md:justify-start"
+      />
+    </Section>
+  </main>
+</MainLayout>

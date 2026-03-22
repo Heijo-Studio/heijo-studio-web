@@ -2,23 +2,31 @@
 import { getAllCategories } from '@utils/collection';
 import MainLayout from './MainLayout.astro';
 
+type Props = {
+  title?: string;
+};
+
+const { title = 'Heijo Studio' } = Astro.props;
+
 const categories = await getAllCategories();
+const { pathname } = Astro.url;
+const isActive = (path: string) => pathname === path || pathname === `${path}/`;
 ---
 
-<MainLayout>
+<MainLayout title={title}>
   <div class="mt-24 flex w-342.5 flex-1">
     <div class="flex w-full flex-col gap-y-8">
       <nav>
         <ul class="flex items-center gap-x-8">
           <li
-            class={`font-inter text-light-gray lowercase underline-offset-4 hover:underline`}
+            class={`font-inter text-light-gray lowercase underline-offset-4 hover:underline ${isActive('/works') ? 'underline' : ''}`}
           >
             <a href={`/works`}>All</a>
           </li>
           {
             categories.map((category) => (
               <li
-                class={`font-inter text-light-gray lowercase underline-offset-4 hover:underline`}
+                class={`font-inter text-light-gray lowercase underline-offset-4 hover:underline ${isActive(`/works/${category}`) ? 'underline' : ''}`}
               >
                 <a href={`/works/${category}`}>{category}</a>
               </li>

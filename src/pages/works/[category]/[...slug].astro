@@ -1,12 +1,11 @@
 ---
-import { Image } from 'astro:assets';
 import { getEntry, render } from 'astro:content';
-import MainLayout from '@layouts/MainLayout.astro';
-import ProjectSpecs from '@components/ProjectDetails/ProjectSpecs.astro';
-import Prose from '@components/ProjectDetails/Prose.astro';
-import Thumbnail from '@components/ProjectDetails/Thumbnail.astro';
-import Tag from '@components/ProjectDetails/Tag.astro';
 import Gallery from '@components/ProjectDetails/Gallery.astro';
+import MainLayout from '@layouts/MainLayout.astro';
+import Prose from '@components/ProjectDetails/Prose.astro';
+import ProjectSpecs from '@components/ProjectDetails/ProjectSpecs.astro';
+import Tag from '@components/ProjectDetails/Tag.astro';
+import Thumbnail from '@components/ProjectDetails/Thumbnail.astro';
 
 const { category, slug } = Astro.params;
 
@@ -33,11 +32,11 @@ const {
 const { Content } = await render(entry);
 ---
 
-<MainLayout>
-  <main class="mt-20 h-full w-full max-w-full overflow-auto">
+<MainLayout title={`${title} | Heijo Studio`}>
+  <main class="h-full w-full max-w-full overflow-auto">
     <Thumbnail image={thumbnail} title={title} />
 
-    <div class="flex justify-center pt-4 pb-6">
+    <div class="flex justify-center pt-8 pb-6">
       <div class="max-w-342.5">
         <h1 class="font-inter text-light-gray w-342.5 text-5xl font-medium">
           {data.title}
