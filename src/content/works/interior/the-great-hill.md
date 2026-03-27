@@ -4,7 +4,7 @@ tags: []
 thumbnail: '@assets/images/works/interior/the-great-hill/thumbnail.png'
 gallery: []
 design: IDG concept
-location: Hong kong
+location: Hong Kong
 ---
 ### A Dialogue Between Heritage and Modernity
 
