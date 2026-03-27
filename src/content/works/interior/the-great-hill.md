@@ -4,7 +4,7 @@ tags: []
 thumbnail: '@assets/images/works/interior/the-great-hill/thumbnail.png'
 gallery: []
 design: IDG concept
-location: Hong Kong
+location: Hong kong
 ---
 ### A Dialogue Between Heritage and Modernity
 
@@ -12,7 +12,7 @@ location: Hong Kong
 
 Anchored by clean lines and a disciplined material palette, the design achieves an atmosphere of profound stillness. By curating natural textures—specifically sustainable wood and bamboo—we have created an interior that feels simultaneously grounded and ethereal, embodying the very essence of tea appreciation.
 
-### Design Highlights
+Design Highlights
 
 * **Temporal Fusion:** A seamless integration of traditional Chinese elements within a minimalist framework, creating a cohesive, high-design tea experience.
 * **Organic Materiality:** The extensive use of precision-milled wood and bamboo introduces organic warmth and a sustainable soul to the contemporary home.
