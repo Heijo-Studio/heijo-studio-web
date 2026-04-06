@@ -1,0 +1,29 @@
+---
+type Props = {
+  categories: string[];
+  pathname: string;
+};
+
+const { categories, pathname } = Astro.props;
+const isActive = (path: string) => pathname === path || pathname === `${path}/`;
+const formatCategory = (category: string) => category.replaceAll('-', ' ');
+---
+
+<nav class="overflow-x-auto pb-2">
+  <ul class="flex items-center gap-x-6 whitespace-nowrap md:gap-x-8">
+    <li
+      class={`font-inter text-sm text-light-gray lowercase underline-offset-4 hover:underline sm:text-base ${isActive('/works') ? 'underline' : ''}`}
+    >
+      <a href="/works">All</a>
+    </li>
+    {
+      categories.map((category) => (
+        <li
+          class={`font-inter text-light-gray text-sm lowercase underline-offset-4 hover:underline sm:text-base ${isActive(`/works/${category}`) ? 'underline' : ''}`}
+        >
+          <a href={`/works/${category}`}>{formatCategory(category)}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

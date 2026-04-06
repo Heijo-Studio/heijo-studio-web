@@ -1,6 +1,7 @@
 ---
 import Footer from '@components/Footer.astro';
-import Navbar from '@components/Navbar.astro';
+import MobileMenu from '@components/Navigation/MobileMenu.astro';
+import Navbar from '@components/Navigation/Navbar.astro';
 import '@styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 
@@ -29,6 +30,7 @@ const { title = 'Heijo Studio' } = Astro.props;
     <Navbar />
     <slot />
     <Footer />
+    <MobileMenu />
   </body>
 </html>
 

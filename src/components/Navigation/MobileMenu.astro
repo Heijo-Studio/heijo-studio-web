@@ -1,0 +1,141 @@
+---
+import { NAV_ITEMS } from 'src/constants';
+import Hamburger from './Hamburger.astro';
+---
+
+<Hamburger />
+
+<div id="mobile-menu" class="md:hidden" data-open="false">
+  <div class="mobile-overlay" aria-hidden="true"></div>
+
+  <aside
+    class="mobile-panel flex h-full flex-col gap-y-12 px-6 py-6"
+    role="dialog"
+    aria-modal="true"
+  >
+    <nav>
+      <ul class="flex flex-col gap-y-5">
+        {
+          NAV_ITEMS.map((item, index) => (
+            <li
+              class="opacity-0 transition-all duration-500"
+              style={`--i: ${index}`}
+            >
+              <a
+                href={item.href}
+                class="font-inter text-light-gray text-xl lowercase hover:text-[#C0BCBC]"
+              >
+                {item.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </aside>
+</div>
+
+<style>
+  #mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+  }
+
+  .mobile-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0);
+    transition:
+      background 0.28s ease,
+      opacity 0.28s ease;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mobile-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: var(--menu-width);
+    background: white;
+    transform: translateX(100%);
+    transition: transform 0.8s cubic-bezier(0.2, 0.9, 0.2, 1);
+    z-index: 65;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.08);
+    pointer-events: none;
+  }
+
+  #mobile-menu[data-open='true'] {
+    pointer-events: auto;
+  }
+
+  #mobile-menu[data-open='true'] .mobile-overlay {
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #mobile-menu[data-open='true'] .mobile-panel {
+    transform: translateX(0);
+    pointer-events: auto;
+  }
+
+  .mobile-panel ul li,
+  .mobile-panel #mobile-socials {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+
+  #mobile-menu[data-open='true'] .mobile-panel ul li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #mobile-menu[data-open='true'] .mobile-panel #mobile-socials {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-panel ul li {
+    transition-delay: calc(var(--i) * 100ms);
+  }
+</style>
+
+<script>
+  function initMenu() {
+    const menuToggle = document.getElementById(
+      'menu-toggle',
+    ) as HTMLButtonElement | null;
+    const mobileMenu = document.getElementById(
+      'mobile-menu',
+    ) as HTMLElement | null;
+
+    if (!menuToggle || !mobileMenu) return;
+
+    function setOpen(open: boolean) {
+      mobileMenu!.dataset.open = String(open);
+      if (open) menuToggle!.classList.add('open');
+      else menuToggle!.classList.remove('open');
+      menuToggle!.setAttribute('aria-expanded', String(open));
+    }
+
+    setOpen(false);
+
+    menuToggle.addEventListener('click', () => {
+      const next = mobileMenu.dataset.open !== 'true';
+      setOpen(next);
+    });
+
+    mobileMenu.querySelectorAll('li').forEach((li) => {
+      li.addEventListener('click', () => setOpen(false));
+    });
+  }
+
+  document.addEventListener('astro:page-load', initMenu);
+</script>

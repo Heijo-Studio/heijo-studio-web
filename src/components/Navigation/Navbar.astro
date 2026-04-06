@@ -1,0 +1,21 @@
+---
+import { NAV_ITEMS } from 'src/constants';
+import Logo from '../Logo.astro';
+import NavItem from './NavItem.astro';
+---
+
+<header
+  class="fixed top-0 left-0 z-50 w-full max-w-full bg-white/50 px-4 py-3 backdrop-blur-md md:px-8"
+>
+  <div class="container flex w-full max-w-full items-center justify-between">
+    <a href="/">
+      <Logo class="w-22.5 md:w-30" />
+    </a>
+
+    <nav class="hidden md:block">
+      <ul class="flex items-center gap-x-8">
+        {NAV_ITEMS.map((item) => <NavItem href={item.href} text={item.name} />)}
+      </ul>
+    </nav>
+  </div>
+</header>

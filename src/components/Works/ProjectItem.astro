@@ -13,17 +13,22 @@ const [category, slug] = project.id.split('/');
 
 <a
   href={`/works/${category}/${slug}`}
-  class="flex cursor-pointer flex-col gap-y-3 underline-offset-4 hover:underline"
+  class="decoration-light-gray flex cursor-pointer flex-col gap-y-3 underline-offset-4 hover:underline"
 >
   {
     thumbnail ? (
-      <Image src={thumbnail} alt={title} class="h-72.5 w-full object-cover" />
+      <Image
+        src={thumbnail}
+        alt={title}
+        loading="eager"
+        class="aspect-4/3 w-full object-cover sm:aspect-auto sm:h-72.5"
+      />
     ) : (
-      <div class="h-72.5 w-full bg-gray-200" />
+      <div class="aspect-4/3 w-full bg-gray-200 sm:aspect-auto sm:h-72.5" />
     )
   }
 
-  <p class="font-inter text-light-gray">
+  <p class="font-inter text-light-gray text-sm md:text-base">
     {title}
   </p>
 </a>

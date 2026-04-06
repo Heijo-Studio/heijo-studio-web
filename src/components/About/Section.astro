@@ -4,6 +4,7 @@ type Props = {
   contentColSpan?: string;
   visualColSpan?: string;
   alignItems?: 'start' | 'center' | 'end';
+  mobileVisualFirst?: boolean;
 };
 
 const {
@@ -11,6 +12,7 @@ const {
   contentColSpan = 'md:col-span-7 lg:col-span-6',
   visualColSpan = 'md:col-span-5 lg:col-span-6',
   alignItems = 'center',
+  mobileVisualFirst = false,
 } = Astro.props;
 
 const isImageLeft = imagePosition === 'left';
@@ -20,26 +22,34 @@ const alignmentClasses = {
   center: 'items-center',
   end: 'items-end',
 } as const;
+
+function contentOrderClasses(): string | string[] {
+  if (mobileVisualFirst && !isImageLeft) return ['order-2', 'md:order-0'];
+  if (mobileVisualFirst) return 'order-2';
+  if (isImageLeft) return 'md:order-2';
+  return '';
+}
+
+function visualOrderClasses(): string | string[] {
+  if (mobileVisualFirst && !isImageLeft) return ['order-1', 'md:order-0'];
+  if (mobileVisualFirst) return 'order-1';
+  if (isImageLeft) return 'md:order-1';
+  return '';
+}
 ---
 
-<section class="container mx-auto px-8 py-20">
+<section class="container mx-auto px-4 py-12 md:px-8 md:py-20">
   <div
     class:list={[
-      'grid grid-cols-1 gap-12 md:grid-cols-12 md:gap-16',
+      'grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-16',
       alignmentClasses[alignItems],
     ]}
   >
-    <div class:list={[contentColSpan, { 'md:order-2': isImageLeft }]}>
+    <div class:list={[contentColSpan, contentOrderClasses()]}>
       <slot />
     </div>
 
-    <div
-      class:list={[
-        'flex flex-col',
-        visualColSpan,
-        isImageLeft ? 'md:order-1' : '',
-      ]}
-    >
+    <div class:list={['flex flex-col', visualColSpan, visualOrderClasses()]}>
       <slot name="visual" />
     </div>
   </div>

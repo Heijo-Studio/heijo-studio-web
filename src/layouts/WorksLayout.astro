@@ -1,4 +1,5 @@
 ---
+import CategoryNav from '@components/Works/CategoryNav.astro';
 import { getAllCategories } from '@utils/collection';
 import MainLayout from './MainLayout.astro';
 
@@ -10,30 +11,12 @@ const { title = 'Heijo Studio' } = Astro.props;
 
 const categories = await getAllCategories();
 const { pathname } = Astro.url;
-const isActive = (path: string) => pathname === path || pathname === `${path}/`;
 ---
 
 <MainLayout title={title}>
-  <div class="mt-24 flex w-full flex-1 px-8 md:w-342.5 md:px-0">
+  <div class="mt-24 flex w-full flex-1 px-4 md:w-342.5 md:px-0">
     <div class="flex w-full flex-col gap-y-8">
-      <nav class="overflow-x-auto pb-2">
-        <ul class="flex items-center gap-x-8 whitespace-nowrap">
-          <li
-            class={`font-inter text-light-gray lowercase underline-offset-4 hover:underline ${isActive('/works') ? 'underline' : ''}`}
-          >
-            <a href={`/works`}>All</a>
-          </li>
-          {
-            categories.map((category) => (
-              <li
-                class={`font-inter text-light-gray lowercase underline-offset-4 hover:underline ${isActive(`/works/${category}`) ? 'underline' : ''}`}
-              >
-                <a href={`/works/${category}`}>{category}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
+      <CategoryNav categories={categories} pathname={pathname} />
 
       <slot />
     </div>
