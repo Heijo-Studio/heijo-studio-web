@@ -18,7 +18,9 @@ const projects = await getWorksByCategory(Astro.params.category);
 
 <WorksLayout title="Works | Heijo Studio">
   <main>
-    <div class="grid grid-cols-1 gap-6 pb-8 sm:grid-cols-2 md:grid-cols-3">
+    <div
+      class="grid grid-cols-1 gap-12 pb-8 sm:grid-cols-2 md:gap-6 lg:grid-cols-3"
+    >
       {projects.map((project) => <ProjectItem project={project} />)}
     </div>
   </main>

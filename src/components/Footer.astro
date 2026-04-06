@@ -1,18 +1,24 @@
 ---
 import { NAV_ITEMS } from 'src/constants';
+import Instagram from './Icons/Instagram.astro';
+import LinkedIn from './Icons/LinkedIn.astro';
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="w-full px-8 py-4">
-  <div class="container flex w-full max-w-full items-center justify-between">
-    <nav>
-      <ul class="flex items-center gap-x-6">
+<footer class="w-full px-8 py-8 md:py-3">
+  <div
+    class="container flex w-full max-w-full flex-col items-center justify-between gap-y-6 md:flex-row md:gap-y-0"
+  >
+    <nav class="flex items-center gap-x-6">
+      <ul
+        class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 md:justify-start"
+      >
         {
           NAV_ITEMS.map((item) => (
             <li>
               <a
-                class="font-inter text-light-gray text-sm lowercase"
+                class="font-inter text-light-gray text-sm lowercase transition-colors hover:text-black"
                 href={item.href}
               >
                 {item.name}
@@ -21,10 +27,53 @@ const currentYear = new Date().getFullYear();
           ))
         }
       </ul>
+
+      <div class="mt-0.5 flex items-center gap-x-4 lowercase">
+        <p class="text-light-gray h-full text-sm">follow us</p>
+
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-light-gray transition-colors hover:text-black"
+        >
+          <Instagram />
+        </a>
+        <a
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-light-gray transition-colors hover:text-black"
+        >
+          <LinkedIn />
+        </a>
+      </div>
     </nav>
 
+    <!-- <div class="flex items-center gap-x-6">
+     
+      <div class="flex items-center gap-x-4">
+        <a
+          href={SOCIAL_LINKS.find((s) => s.icon === 'instagram')?.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-light-gray transition-colors hover:text-black"
+        >
+          <Instagram />
+        </a>
+        <a
+          href={SOCIAL_LINKS.find((s) => s.icon === 'linkedin')?.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-light-gray transition-colors hover:text-black"
+        >
+          <LinkedIn />
+        </a>
+      </div>
+    </div> -->
+
     <p class="font-inter text-light-gray text-xs">
-      © {currentYear} Heijo Studio. All rights reserved.
+      © {currentYear} HEIJO Studio.
     </p>
   </div>
 </footer>
