@@ -1,11 +1,10 @@
 // @ts-check
 import markdoc from '@astrojs/markdoc';
-import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwindcss from '@tailwindcss/vite';
-import keystatic from '@keystatic/astro';
-
 import vercel from '@astrojs/vercel';
+import keystatic from '@keystatic/astro';
+import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
