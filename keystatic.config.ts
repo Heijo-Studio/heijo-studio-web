@@ -1,4 +1,4 @@
-import { config, fields, collection } from '@keystatic/core';
+import { collection, config, fields } from '@keystatic/core';
 
 const isProd = import.meta.env.PROD;
 

@@ -2,6 +2,7 @@ import {
   experimental_AstroContainer as AstroContainer,
   type ContainerRenderOptions,
 } from 'astro/container';
+
 type AstroComponentFactory = Parameters<AstroContainer['renderToString']>[0];
 
 export async function renderAstroComponent(
