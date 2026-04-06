@@ -11,22 +11,23 @@ gallery:
 design: IDG concept
 location: 'Hong Kong '
 ---
+
 Comprehensive interior design for a Taikoo Shing residence focus on creating a harmonious blend of modern aesthetics and functionality. The project involves space planning, custom furniture design, lighting design, and the integration of smart home technology to enhance daily living. Special attention is given to maximizing space efficiency and ensuring a cohesive, elegant look throughout the home.
 
 #### **Design Highlights**
 
-* Smart storage solutions
-* Integrated lighting
-* Open-plan living areas
+- Smart storage solutions
+- Integrated lighting
+- Open-plan living areas
 
 #### **Materials and Techniques**
 
-* High-quality wood and metals
-* Energy-efficient lighting
-* Modern carpentry and finishing techniques
+- High-quality wood and metals
+- Energy-efficient lighting
+- Modern carpentry and finishing techniques
 
 #### **Sustainability and Environment**
 
-* Use of eco-friendly materials
-* Energy-saving appliances
-* Indoor plants for better air quality
+- Use of eco-friendly materials
+- Energy-saving appliances
+- Indoor plants for better air quality

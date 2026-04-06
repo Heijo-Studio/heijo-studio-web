@@ -13,5 +13,11 @@
 
 /* Mobile menu grouped state styling using overlay + panel */
 :root {
-  --menu-width: 50vw;
+  --menu-width: 75vw;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --menu-width: 50vw;
+  }
 }

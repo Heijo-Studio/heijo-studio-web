@@ -6,19 +6,19 @@ Portfolio/showcase website for Heijo Studio, a multi-disciplinary architecture a
 
 ## Tech Stack
 
-| Layer | Tool |
-|---|---|
-| Framework | Astro 5 (SSR via Vercel adapter) |
-| Styling | Tailwind CSS 4 (Vite plugin — no separate config file) |
-| CMS | Keystatic (local in dev, GitHub-backed in production) |
-| Content format | Markdoc (`.md` extension) |
-| Interactivity | React 19 (`.tsx` for interactive components) |
-| Type checking | TypeScript 5 strict mode |
-| Linting | Biome 2 |
-| Formatting | Prettier (for `.astro` files; Biome handles `.ts`/`.tsx`) |
-| Testing | Vitest + Testing Library + happy-dom |
-| Package manager | pnpm |
-| Deployment | Vercel |
+| Layer           | Tool                                                      |
+| --------------- | --------------------------------------------------------- |
+| Framework       | Astro 5 (SSR via Vercel adapter)                          |
+| Styling         | Tailwind CSS 4 (Vite plugin — no separate config file)    |
+| CMS             | Keystatic (local in dev, GitHub-backed in production)     |
+| Content format  | Markdoc (`.md` extension)                                 |
+| Interactivity   | React 19 (`.tsx` for interactive components)              |
+| Type checking   | TypeScript 5 strict mode                                  |
+| Linting         | Biome 2                                                   |
+| Formatting      | Prettier (for `.astro` files; Biome handles `.ts`/`.tsx`) |
+| Testing         | Vitest + Testing Library + happy-dom                      |
+| Package manager | pnpm                                                      |
+| Deployment      | Vercel                                                    |
 
 ## Commands
 
@@ -56,12 +56,12 @@ Keystatic manages four content collections. All entries share the same schema.
 
 ### Collections
 
-| Name | Path | Image directory |
-|---|---|---|
-| `architecture` | `src/content/works/architecture/**` | `src/assets/images/works/architecture/` |
+| Name                      | Path                                            | Image directory                                     |
+| ------------------------- | ----------------------------------------------- | --------------------------------------------------- |
+| `architecture`            | `src/content/works/architecture/**`             | `src/assets/images/works/architecture/`             |
 | `constructionEngineering` | `src/content/works/construction-engineering/**` | `src/assets/images/works/construction-engineering/` |
-| `interior` | `src/content/works/interior/**` | `src/assets/images/works/interior/` |
-| `products` | `src/content/works/products/**` | `src/assets/images/works/products/` |
+| `interior`                | `src/content/works/interior/**`                 | `src/assets/images/works/interior/`                 |
+| `products`                | `src/content/works/products/**`                 | `src/assets/images/works/products/`                 |
 
 ### Entry Schema
 
@@ -136,6 +136,11 @@ src/
 - Custom CSS variables: `--font-montserrat`, `--font-inter`, `--font-roboto`, `--color-light-gray: #7b7b83`, `--menu-width: 50vw`
 - Typography plugin available via `@plugin '@tailwindcss/typography'`
 
+### Logic and Control Flow
+
+- Avoid nested ternaries — prefer a named function with clear `if` statements and early returns
+- Keep conditional logic out of JSX/template expressions; compute values in the frontmatter or script block instead
+
 ### Biome (`.ts` / `.tsx`)
 
 - Single quotes, trailing commas (all), semicolons always
@@ -155,6 +160,7 @@ src/content/works/{category}/{slug}/
 ## Pre-commit Hooks (Husky + lint-staged)
 
 On commit, lint-staged automatically runs:
+
 - `astro check` on `.astro` files
 - `biome lint` + `prettier --write` on `.ts`, `.tsx`, `.js`, `.astro` files
 

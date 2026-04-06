@@ -9,16 +9,20 @@ import MainLayout from '@layouts/MainLayout.astro';
 <MainLayout>
   <main class="container w-full max-w-full flex-1 overflow-hidden">
     <section class="flex h-full w-full flex-col">
-      <div class="flex-1 overflow-hidden">
+      <div class="relative flex-1 overflow-hidden">
         <Image
           src={heroImage}
           alt="hero-image"
           class="h-full w-full object-cover"
         />
+        <div
+          class="pointer-events-none absolute inset-0 bg-black/20 md:bg-none"
+        >
+        </div>
       </div>
 
       <h1
-        class="font-inter absolute top-[35%] right-[10%] max-w-md text-4xl font-normal text-white"
+        class="font-inter absolute top-1/2 right-4 left-4 -translate-y-1/2 text-3xl font-normal text-white md:top-[35%] md:right-[10%] md:left-auto md:max-w-md md:translate-y-0 md:text-4xl"
       >
         Connecting the dots with multi-disciplinary design solutions
       </h1>
