@@ -10,3 +10,8 @@
   --font-roboto: 'Roboto', sans-serif;
   --color-light-gray: #7b7b83;
 }
+
+/* Mobile menu grouped state styling using overlay + panel */
+:root {
+  --menu-width: 50vw;
+}

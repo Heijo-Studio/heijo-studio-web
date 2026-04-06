@@ -33,20 +33,28 @@ const { Content } = await render(entry);
 ---
 
 <MainLayout title={`${title} | Heijo Studio`}>
-  <main class="h-full w-full max-w-full overflow-auto">
-    <Thumbnail image={thumbnail} title={title} />
-
-    <div class="flex justify-center pt-8 pb-6">
-      <div class="max-w-342.5">
-        <h1 class="font-inter text-light-gray w-342.5 text-5xl font-medium">
-          {data.title}
+  <main class="h-full w-full max-w-full overflow-x-hidden">
+    <!-- Header Title (Stacked on mobile) -->
+    <div class="flex justify-center px-8 pt-24 pb-6 md:px-0 md:pt-8">
+      <div class="w-full max-w-342.5">
+        <h1 class="font-inter text-light-gray text-3xl font-medium md:text-5xl">
+          {title}
         </h1>
       </div>
     </div>
 
-    <div class="flex w-full justify-center">
-      <div class="flex w-342.5 justify-between gap-x-12 py-8">
-        <div class="flex w-1/2 flex-col gap-y-10">
+    <Thumbnail image={thumbnail} title={title} />
+
+    <div class="flex w-full justify-center px-8 md:px-0">
+      <div
+        class="flex w-full max-w-342.5 flex-col gap-y-12 py-8 md:flex-row md:justify-between md:gap-x-12"
+      >
+        <!-- Mobile: Gallery moves up -->
+        <div class="order-1 md:order-2 md:w-1/2">
+          <Gallery items={gallery} />
+        </div>
+
+        <div class="order-2 flex flex-col gap-y-10 md:order-1 md:w-1/2">
           <ProjectSpecs
             construction={construction}
             design={design}
@@ -58,13 +66,9 @@ const { Content } = await render(entry);
             <Content />
           </Prose>
 
-          <div class="flex flex-wrap gap-x-5">
+          <div class="flex flex-wrap gap-x-5 gap-y-3">
             {tags?.map((tag) => <Tag text={tag} />)}
           </div>
-        </div>
-
-        <div>
-          <Gallery items={gallery} />
         </div>
       </div>
     </div>
