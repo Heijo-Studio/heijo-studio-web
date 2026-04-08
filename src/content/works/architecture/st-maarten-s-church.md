@@ -8,11 +8,13 @@ gallery:
   - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/1/image.webp'
     alt: Visitor center
   - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/2/image.webp'
-    alt: Section
-  - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/3/image.webp'
     alt: Market hall
-  - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/4/image.webp'
+  - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/3/image.webp'
     alt: Heritage courtyard
+  - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/4/image.webp'
+    alt: Back entrance
+  - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/5/image.webp'
+    alt: Section
 size: ' 1,660 sqm'
 location: Tiel, the Netherlands
 ---
