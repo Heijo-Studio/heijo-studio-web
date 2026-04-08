@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Claude code plans
 docs/plans/**.md
+
+# Vercel
+.vercel/
