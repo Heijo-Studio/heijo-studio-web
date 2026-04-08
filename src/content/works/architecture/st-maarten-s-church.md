@@ -11,7 +11,9 @@ gallery:
     alt: Section
   - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/3/image.webp'
     alt: Market hall
-design: ' 1,660 sqm'
+  - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/4/image.webp'
+    alt: Heritage courtyard
+size: ' 1,660 sqm'
 location: Tiel, the Netherlands
 ---
 #### 'Activating the natural and historical edges'&#x20;
