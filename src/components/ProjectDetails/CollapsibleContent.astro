@@ -1,0 +1,93 @@
+<div class="font-inter text-sm" data-collapsible data-open="false">
+  <div class="collapsible-inner overflow-hidden" data-content>
+    <slot />
+  </div>
+
+  <button
+    class="collapsible-btn text-light-gray mt-3 flex cursor-pointer items-center gap-x-1.5 transition-opacity hover:opacity-70"
+    data-toggle
+    aria-expanded="false"
+    hidden
+  >
+    <span data-label>Read more</span>
+    <svg
+      data-icon
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9"></polyline>
+    </svg>
+  </button>
+</div>
+
+<style>
+  .collapsible-inner {
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-icon] {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-collapsible][data-open='true'] [data-icon] {
+    transform: rotate(180deg);
+  }
+</style>
+
+<script>
+  const PEEK_HEIGHT = 275;
+
+  function initCollapsible() {
+    document.querySelectorAll('[data-collapsible]').forEach((el) => {
+      const inner = el.querySelector('[data-content]') as HTMLElement | null;
+      const btn = el.querySelector('[data-toggle]') as HTMLButtonElement | null;
+      const label = el.querySelector('[data-label]') as HTMLElement | null;
+
+      if (!inner || !btn || !label) return;
+
+      // Measure full height before any height constraint is applied
+      const fullHeight = inner.scrollHeight;
+
+      // Reset state (important for ClientRouter / view transitions)
+      el.setAttribute('data-open', 'false');
+      btn.setAttribute('aria-expanded', 'false');
+      label.textContent = 'Read more';
+
+      if (fullHeight <= PEEK_HEIGHT) {
+        // Short content — show in full, no button needed
+        inner.style.height = `${fullHeight}px`;
+        return;
+      }
+
+      // Collapse to peek height
+      inner.style.height = `${PEEK_HEIGHT}px`;
+      btn.hidden = false;
+
+      btn.addEventListener('click', () => {
+        const isOpen = el.getAttribute('data-open') === 'true';
+
+        if (isOpen) {
+          inner.style.height = `${PEEK_HEIGHT}px`;
+          el.setAttribute('data-open', 'false');
+          btn.setAttribute('aria-expanded', 'false');
+          label.textContent = 'Read more';
+        } else {
+          inner.style.height = `${fullHeight}px`;
+          el.setAttribute('data-open', 'true');
+          btn.setAttribute('aria-expanded', 'true');
+          label.textContent = 'Close';
+        }
+      });
+    });
+  }
+
+  document.addEventListener('astro:page-load', initCollapsible);
+</script>

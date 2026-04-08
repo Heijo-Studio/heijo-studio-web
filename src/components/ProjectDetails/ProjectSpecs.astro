@@ -1,25 +1,32 @@
 ---
 type Props = {
-  construction?: Date;
+  construction?: Date | string;
   design?: string;
   location?: string;
   size?: string;
 };
 
 const { construction, design, location, size } = Astro.props;
+
+const constructionYear = construction
+  ? new Date(construction).getFullYear().toString()
+  : undefined;
+
+const rows = [
+  { label: 'Location', value: location },
+  { label: 'Size', value: size },
+  { label: 'Design', value: design },
+  { label: 'Construction', value: constructionYear },
+];
 ---
 
-<div>
-  <p class="text-light-gray font-inter text-base font-normal">
-    Location: {location ?? '-'}
-  </p>
-  <p class="text-light-gray font-inter text-base font-normal">
-    Size: {size ?? '-'}
-  </p>
-  <p class="text-light-gray font-inter text-base font-normal">
-    Design: {design ?? '-'}
-  </p>
-  <p class="text-light-gray font-inter text-base font-normal">
-    Construction: {construction?.toLocaleDateString() ?? '-'}
-  </p>
-</div>
+<dl class="font-inter w-full border-b-[0.25px] border-[#7B7B83] text-xs">
+  {
+    rows.map((row) => (
+      <div class="grid grid-cols-2 gap-x-4 border-b-[0.25px] border-[#7B7B83] py-1.5 last:border-b-0">
+        <dt class="text-light-gray">{row.label}</dt>
+        <dd>{row.value ?? '-'}</dd>
+      </div>
+    ))
+  }
+</dl>

@@ -1,5 +1,6 @@
 ---
 import { getEntry, render } from 'astro:content';
+import CollapsibleContent from '@components/ProjectDetails/CollapsibleContent.astro';
 import Gallery from '@components/ProjectDetails/Gallery.astro';
 import ProjectSpecs from '@components/ProjectDetails/ProjectSpecs.astro';
 import Prose from '@components/ProjectDetails/Prose.astro';
@@ -33,9 +34,10 @@ const { Content } = await render(entry);
 ---
 
 <MainLayout title={`${title} | Heijo Studio`}>
-  <main class="h-full w-full max-w-full overflow-x-hidden">
-    <!-- Header Title (Stacked on mobile) -->
-    <div class="flex justify-center px-8 pt-24 pb-6 md:px-0 md:pt-8">
+  <main class="h-full w-full max-w-full overflow-x-hidden pt-16 md:pt-0">
+    <Thumbnail image={thumbnail} title={title} />
+
+    <div class="flex justify-center px-8 pt-6 pb-6 md:px-0">
       <div class="w-full max-w-342.5">
         <h1 class="font-inter text-light-gray text-3xl font-medium md:text-5xl">
           {title}
@@ -43,34 +45,47 @@ const { Content } = await render(entry);
       </div>
     </div>
 
-    <Thumbnail image={thumbnail} title={title} />
-
     <div class="flex w-full justify-center px-8 md:px-0">
       <div
-        class="flex w-full max-w-342.5 flex-col gap-y-12 py-8 md:flex-row md:justify-between md:gap-x-12"
+        class="flex w-full max-w-342.5 flex-col gap-y-8 pb-8 md:flex-row md:gap-x-12 md:pt-8"
       >
-        <!-- Mobile: Gallery moves up -->
-        <div class="order-1 md:order-2 md:w-1/2">
-          <Gallery items={gallery} />
-        </div>
-
-        <div class="order-2 flex flex-col gap-y-10 md:order-1 md:w-1/2">
+        <div class="order-2 md:order-1 md:w-48 md:shrink-0">
           <ProjectSpecs
             construction={construction}
             design={design}
             location={location}
             size={size}
           />
+        </div>
 
-          <Prose>
-            <Content />
-          </Prose>
-
-          <div class="flex flex-wrap gap-x-5 gap-y-3">
-            {tags?.map((tag) => <Tag text={tag} />)}
-          </div>
+        <div class="order-1 md:order-2 md:flex-1">
+          <CollapsibleContent>
+            <Prose>
+              <Content />
+            </Prose>
+          </CollapsibleContent>
         </div>
       </div>
     </div>
+
+    <div class="flex w-full justify-center px-8 pb-8 md:px-0">
+      <div class="w-full max-w-342.5">
+        <Gallery items={gallery} />
+      </div>
+    </div>
+
+    {
+      tags && tags.length > 0 && (
+        <div class="flex w-full justify-center px-8 pb-12 md:px-0">
+          <div class="w-full max-w-342.5">
+            <div class="flex flex-wrap gap-x-5 gap-y-3">
+              {tags.map((tag) => (
+                <Tag text={tag} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )
+    }
   </main>
 </MainLayout>

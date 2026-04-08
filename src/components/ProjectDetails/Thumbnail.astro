@@ -15,7 +15,9 @@ const { image, title } = Astro.props;
     <Image
       src={image}
       alt={title}
-      class="aspect-video w-full object-cover object-center"
+      fetchpriority="high"
+      loading="eager"
+      class="h-auto w-full"
     />
   )
 }
