@@ -4,9 +4,13 @@ tags: []
 thumbnail: '@assets/images/works/architecture/st-maarten-s-church/thumbnail.webp'
 gallery:
   - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/0/image.webp'
+    alt: Site plan
   - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/1/image.webp'
+    alt: Visitor center
   - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/2/image.webp'
     alt: Section
+  - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/3/image.webp'
+    alt: Market hall
 design: ' 1,660 sqm'
 location: Tiel, the Netherlands
 ---
