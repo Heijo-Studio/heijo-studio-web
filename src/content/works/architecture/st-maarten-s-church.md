@@ -5,6 +5,8 @@ thumbnail: '@assets/images/works/architecture/st-maarten-s-church/thumbnail.webp
 gallery:
   - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/0/image.webp'
   - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/1/image.webp'
+  - image: '@assets/images/works/architecture/st-maarten-s-church/gallery/2/image.webp'
+    alt: Section
 design: ' 1,660 sqm'
 location: Tiel, the Netherlands
 ---
