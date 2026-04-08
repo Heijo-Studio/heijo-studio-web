@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import architectureImage from '@assets/images/about/about_architecture.webp';
 import heroImage from '@assets/images/about/about_hero.webp';
+import heroMobileImage from '@assets/images/about/about_hero_mobile.webp';
 import installationImage from '@assets/images/about/about_installation.webp';
 import interiorImage from '@assets/images/about/about_interior.webp';
 import Description from '@components/About/Description.astro';
@@ -16,13 +17,20 @@ import MainLayout from '@layouts/MainLayout.astro';
 
 <MainLayout title="About | Heijo Studio">
   <main class="w-full flex-1">
-    <picture>
-      <Image
-        src={heroImage}
-        alt="About hero"
-        class="h-64 w-full object-cover sm:h-96 md:h-212"
-      />
-    </picture>
+    <Image
+      src={heroMobileImage}
+      alt="About hero"
+      loading="eager"
+      fetchpriority="high"
+      class="block aspect-3/4 w-full object-cover md:hidden"
+    />
+    <Image
+      src={heroImage}
+      alt="About hero"
+      loading="eager"
+      fetchpriority="high"
+      class="hidden aspect-12/5 w-full object-cover md:block"
+    />
 
     <Section
       imagePosition="right"
