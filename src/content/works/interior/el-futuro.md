@@ -18,6 +18,8 @@ gallery:
     alt: living room
   - image: '@assets/images/works/interior/el-futuro/gallery/5/image.webp'
     alt: living room detail_1
+  - image: '@assets/images/works/interior/el-futuro/gallery/6/image.webp'
+    alt: living room _2
 size: 100m2
 design: IDG Concept
 construction: 2021-02-14
