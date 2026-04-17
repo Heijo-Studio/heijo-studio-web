@@ -4,7 +4,19 @@ tags: []
 thumbnail: '@assets/images/works/interior/victoria-tower/thumbnail.png'
 gallery:
   - image: '@assets/images/works/interior/victoria-tower/gallery/0/image.webp'
+    alt: living room
   - image: '@assets/images/works/interior/victoria-tower/gallery/1/image.webp'
+    alt: dining
+  - image: '@assets/images/works/interior/victoria-tower/gallery/2/image.webp'
+    alt: detail_entrance
+  - image: '@assets/images/works/interior/victoria-tower/gallery/3/image.webp'
+    alt: detail lamp
+  - image: '@assets/images/works/interior/victoria-tower/gallery/4/image.webp'
+    alt: toilet_1
+  - image: '@assets/images/works/interior/victoria-tower/gallery/5/image.webp'
+    alt: toilet_2
+  - image: '@assets/images/works/interior/victoria-tower/gallery/6/image.webp'
+    alt: detail_bathtub
 location: Hong Kong
 ---
 Victoria Tower transforms a contemporary space into a high-functioning family sanctuary that celebrates everyday comfort. The project emphasizes modern minimalist design with clean lines and open spaces to enhance natural light and airflow.  The interior layout integrates bespoke built-in furniture, lighting, and smart home technology. Custom built-in furniture maximizes every square meter, providing essential storage without cluttering the living area and seamless circulation flow is created by the adoption of open-plan layout. On the other hand, we prioritize eco-friendly, low-VOC finishes and sustainable materials like high-quality wood and metal to ensure a hazard-free and healthy living environment.&#x20;
@@ -15,8 +27,6 @@ Victoria Tower transforms a contemporary space into a high-functioning family sa
 
 - Energy-efficient lighting solutions were integrated without compromise to the quality of light, which remains warm and precise throughout.&#x20;
 - Durable and sustainable materials were used to furnish the interior.&#x20;
-
-
 
 #### Sustainability:
 
