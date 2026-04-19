@@ -18,6 +18,7 @@ gallery:
 size: ' 1,660 sqm'
 location: Tiel, the Netherlands
 ---
+
 #### 'Activating the natural and historical edges'&#x20;
 
 That the church is bounded by greenery and water which gives secluded atmosphere and at the same time alienate it from the city centre among the tranquil landscape. The project aims to dissolve the topographical edges of the site,activate the underused liturgical building, preserve and restore the existing building in its full glory, in its entirety, despite it being heavily affected by the ravages of time. Tiel is home to a rich mix of ethnicities and working class that work in larger cities nearby. New major programmes including a market hall and visitor center are introduced to transform the church back to a public focal point, trigger cultural sharing between amateurs and trigger local economic opportunities for youth start-ups. the church possesses the qualities of a major structural urban element. The extension adds a contemporary layer to the inhomogeneous composition resulting from the continuous construction and deconstruction over times and makes the history of the church more integral, visible and readable.&#x20;

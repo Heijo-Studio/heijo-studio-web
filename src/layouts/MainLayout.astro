@@ -7,9 +7,52 @@ import { ClientRouter } from 'astro:transitions';
 
 type Props = {
   title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown>;
 };
 
-const { title = 'Heijo Studio' } = Astro.props;
+const {
+  title,
+  description,
+  ogImage = '/og-default.jpg',
+  ogType = 'website',
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+const titleOutput =
+  title && title !== 'Heijo Studio'
+    ? `${title} — Heijo Studio`
+    : 'Heijo Studio';
+const hasDescription =
+  typeof description === 'string' && description.length > 0;
+
+const canonicalURL = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : Astro.url.href;
+
+const resolvedOgImage = Astro.site
+  ? new URL(ogImage, Astro.site).toString()
+  : ogImage;
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${Astro.site ?? ''}#website`,
+  name: 'Heijo Studio',
+  url: Astro.site?.toString(),
+  description:
+    'Multi-disciplinary architecture and design studio based in the Netherlands.',
+  publisher: {
+    '@type': 'Organization',
+    '@id': `${Astro.site ?? ''}#organization`,
+    name: 'Heijo Studio',
+    url: Astro.site?.toString(),
+  },
+};
 ---
 
 <!doctype html>
@@ -17,11 +60,50 @@ const { title = 'Heijo Studio' } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>{titleOutput}</title>
+    {hasDescription && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={titleOutput} />
+    {hasDescription && <meta property="og:description" content={description} />}
+    <meta property="og:image" content={resolvedOgImage} />
+    <meta property="og:site_name" content="Heijo Studio" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={titleOutput} />
+    {
+      hasDescription && (
+        <meta name="twitter:description" content={description} />
+      )
+    }
+    <meta name="twitter:image" content={resolvedOgImage} />
+
+    <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="shortcut icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+
+    <!-- Structured data -->
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(websiteSchema)}
+    />
+    {
+      jsonLd && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify(jsonLd)}
+        />
+      )
+    }
+
     <ClientRouter />
   </head>
   <body class="flex h-dvh flex-col items-center overflow-x-hidden bg-white">

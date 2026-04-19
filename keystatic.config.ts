@@ -49,6 +49,10 @@ export default config({
             itemLabel: (props) => props.fields.alt.value || 'Gallery Image',
           },
         ),
+        description: fields.text({
+          label: 'SEO Description',
+          multiline: false,
+        }),
         size: fields.text({ label: 'Size' }),
         design: fields.text({ label: 'Design' }),
         construction: fields.date({ label: 'Construction' }),
@@ -92,6 +96,10 @@ export default config({
             itemLabel: (props) => props.fields.alt.value || 'Gallery Image',
           },
         ),
+        description: fields.text({
+          label: 'SEO Description',
+          multiline: false,
+        }),
         size: fields.text({ label: 'Size' }),
         design: fields.text({ label: 'Design' }),
         construction: fields.date({ label: 'Construction' }),
@@ -135,6 +143,10 @@ export default config({
             itemLabel: (props) => props.fields.alt.value || 'Gallery Image',
           },
         ),
+        description: fields.text({
+          label: 'SEO Description',
+          multiline: false,
+        }),
         size: fields.text({ label: 'Size' }),
         design: fields.text({ label: 'Design' }),
         construction: fields.date({ label: 'Construction' }),
@@ -178,6 +190,10 @@ export default config({
             itemLabel: (props) => props.fields.alt.value || 'Gallery Image',
           },
         ),
+        description: fields.text({
+          label: 'SEO Description',
+          multiline: false,
+        }),
         size: fields.text({ label: 'Size' }),
         design: fields.text({ label: 'Design' }),
         construction: fields.date({ label: 'Construction' }),

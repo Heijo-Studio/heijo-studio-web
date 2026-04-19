@@ -4,9 +4,28 @@ export const prerender = true;
 import { Image } from 'astro:assets';
 import heroImage from '@assets/images/hero.webp';
 import MainLayout from '@layouts/MainLayout.astro';
+import { SOCIAL_LINKS } from 'src/constants';
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${Astro.site ?? ''}#organization`,
+  name: 'Heijo Studio',
+  url: Astro.site?.toString(),
+  sameAs: SOCIAL_LINKS.map((l) => l.href),
+  knowsAbout: [
+    'Architecture',
+    'Interior Design',
+    'Art Installation',
+    'Spatial Design',
+  ],
+};
 ---
 
-<MainLayout>
+<MainLayout
+  description="Multi-disciplinary architecture and design studio connecting the dots through spatial research, interior design, and art installations."
+  jsonLd={organizationSchema}
+>
   <main class="container w-full max-w-full flex-1 overflow-hidden">
     <section class="flex h-full w-full flex-col">
       <div class="relative flex-1 overflow-hidden">
