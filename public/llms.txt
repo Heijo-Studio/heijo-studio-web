@@ -1,0 +1,14 @@
+# Heijo Studio
+
+> An international multi-disciplinary design practice based in the Netherlands, crafting solutions for architecture, interiors, art installations, and spatial experimentation.
+
+## About
+
+- [About Heijo Studio](https://heijostudio.com/about/): The studio's philosophy, founders, and approach to connecting cultural and spatial contexts through design.
+
+## Works
+
+- [All Works](https://heijostudio.com/works/): Complete portfolio across all disciplines.
+- [Architecture](https://heijostudio.com/works/architecture/): Architectural projects including spatial research, feasibility studies, and adaptive reuse.
+- [Interior Design](https://heijostudio.com/works/interior/): Residential, commercial, restaurant, and exhibition interior projects.
+- [Art & Installation](https://heijostudio.com/works/construction-engineering/): Art installations, lighting design, and spatial experimentation.

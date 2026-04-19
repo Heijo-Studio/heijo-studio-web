@@ -13,10 +13,30 @@ export async function getStaticPaths() {
   }));
 }
 
-const projects = await getWorksByCategory(Astro.params.category);
+const { category } = Astro.params;
+
+const displayName = category
+  .split('-')
+  .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+  .join(' ');
+
+const categoryDescriptions: Record<string, string> = {
+  architecture:
+    'Architectural projects by Heijo Studio: spatial research, feasibility studies, and adaptive reuse design.',
+  interior:
+    'Interior design projects by Heijo Studio: residential, commercial, restaurant, and exhibition spaces.',
+  'construction-engineering':
+    'Art installations and lighting projects by Heijo Studio: immersive spatial experiences and projection mapping.',
+  products: 'Product design projects by Heijo Studio.',
+};
+
+const description =
+  categoryDescriptions[category] ?? `${displayName} projects by Heijo Studio.`;
+
+const projects = await getWorksByCategory(category);
 ---
 
-<WorksLayout title="Works | Heijo Studio">
+<WorksLayout title={`${displayName} Works`} description={description}>
   <main>
     <div
       class="grid grid-cols-1 gap-12 pb-8 sm:grid-cols-2 md:gap-6 lg:grid-cols-3"

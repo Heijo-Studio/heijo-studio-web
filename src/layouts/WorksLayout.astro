@@ -5,15 +5,17 @@ import MainLayout from './MainLayout.astro';
 
 type Props = {
   title?: string;
+  description?: string;
+  ogImage?: string;
 };
 
-const { title = 'Heijo Studio' } = Astro.props;
+const { title, description, ogImage } = Astro.props;
 
 const categories = await getAllCategories();
 const { pathname } = Astro.url;
 ---
 
-<MainLayout title={title}>
+<MainLayout title={title} description={description} ogImage={ogImage}>
   <div class="mt-24 flex w-full flex-1 px-4 md:w-342.5 md:px-0">
     <div class="flex w-full flex-col gap-y-8">
       <CategoryNav categories={categories} pathname={pathname} />

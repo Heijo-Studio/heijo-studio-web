@@ -1,4 +1,5 @@
 ---
+import { getImage } from 'astro:assets';
 import { getEntry, render } from 'astro:content';
 import CollapsibleContent from '@components/ProjectDetails/CollapsibleContent.astro';
 import Gallery from '@components/ProjectDetails/Gallery.astro';
@@ -23,6 +24,7 @@ const { data } = entry;
 const {
   title,
   construction,
+  description: frontmatterDescription,
   design,
   tags,
   location,
@@ -31,9 +33,74 @@ const {
   gallery,
 } = data;
 const { Content } = await render(entry);
+
+// Three-tier description fallback
+let description: string | undefined;
+if (frontmatterDescription && frontmatterDescription.length > 0) {
+  description = frontmatterDescription;
+} else if (entry.body?.trim()) {
+  description = entry.body
+    .trim()
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/\*{1,2}([^*]+)\*{1,2}/g, '$1')
+    .replace(/_{1,2}([^_]+)_{1,2}/g, '$1')
+    .replace(/`[^`]+`/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/\n+/g, ' ')
+    .trim()
+    .slice(0, 160);
+}
+
+// OG image via getImage()
+let ogImage: string | undefined;
+if (thumbnail && Astro.site) {
+  const imageResult = await getImage({
+    src: thumbnail,
+    width: 1200,
+    format: 'jpeg',
+  });
+  ogImage = new URL(imageResult.src, Astro.site).toString();
+}
+
+// Category display name
+const displayCategory = category
+  .split('-')
+  .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+  .join(' ');
+
+// CreativeWork JSON-LD
+const canonicalUrl = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : Astro.url.href;
+
+const projectSchema: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: title,
+  url: canonicalUrl,
+  creator: {
+    '@type': 'Organization',
+    '@id': `${Astro.site ?? ''}#organization`,
+    name: 'Heijo Studio',
+  },
+  genre: displayCategory,
+};
+
+if (description) projectSchema.description = description;
+if (construction) projectSchema.dateCreated = construction.toISOString();
+if (location)
+  projectSchema.locationCreated = { '@type': 'Place', name: location };
+if (tags?.length) projectSchema.keywords = tags.join(', ');
+if (ogImage) projectSchema.image = [{ '@type': 'ImageObject', url: ogImage }];
 ---
 
-<MainLayout title={`${title} | Heijo Studio`}>
+<MainLayout
+  title={title}
+  description={description}
+  ogImage={ogImage}
+  ogType="article"
+  jsonLd={projectSchema}
+>
   <main class="h-full w-full max-w-full overflow-x-hidden pt-16 md:pt-0">
     <Thumbnail image={thumbnail} title={title} />
 
