@@ -5,11 +5,15 @@ thumbnail: >-
   @assets/images/works/architecture/recyclage-material-reuse-and-recycling-learning-centre/thumbnail.webp
 gallery:
   - image: >-
-      @assets/images/works/architecture/recyclage-material-reuse-and-recycling-learning-centre/gallery/0/image.png
-    alt: 'interior '
+      @assets/images/works/architecture/recyclage-material-reuse-and-recycling-learning-centre/gallery/0/image.jpg
+    alt: time of events
   - image: >-
       @assets/images/works/architecture/recyclage-material-reuse-and-recycling-learning-centre/gallery/1/image.jpg
-    alt: time of events
+    alt: 'interior '
+  - image: >-
+      @assets/images/works/architecture/recyclage-material-reuse-and-recycling-learning-centre/gallery/2/image.jpg
+    alt: interior_2
+size: 2,366sqm
 location: Anderlecht, Brussels
 ---
 #### 'Nomadic application of aluminium from the practice of urban mining'
