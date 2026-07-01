@@ -1,0 +1,226 @@
+---
+import CalButton from '@components/Contact/CalButton';
+import FormInput from '@components/Contact/FormInput.astro';
+import FormSelect from '@components/Contact/FormSelect.astro';
+import FormTextarea from '@components/Contact/FormTextarea.astro';
+
+type SelectOption = { value: string; label: string };
+
+type Props = {
+  heading: string;
+  replyNote: string;
+  labelName: string;
+  labelEmail: string;
+  labelProjectType: string;
+  labelLocation: string;
+  labelTimeline: string;
+  labelBudget: string;
+  labelLanguage: string;
+  labelMessage: string;
+  submit: string;
+  calLink: string;
+  bookCta: string;
+  projectTypeOptions: SelectOption[];
+  locationOptions: SelectOption[];
+  timelineOptions: SelectOption[];
+  budgetOptions: SelectOption[];
+  languageOptions: SelectOption[];
+  thankyouHeading: string;
+  thankyouBody: string;
+  thankyouCta: string;
+};
+
+const {
+  heading,
+  replyNote,
+  labelName,
+  labelEmail,
+  labelProjectType,
+  labelLocation,
+  labelTimeline,
+  labelBudget,
+  labelLanguage,
+  labelMessage,
+  submit,
+  calLink,
+  bookCta,
+  projectTypeOptions,
+  locationOptions,
+  timelineOptions,
+  budgetOptions,
+  languageOptions,
+  thankyouHeading,
+  thankyouBody,
+  thankyouCta,
+} = Astro.props;
+---
+
+<div>
+  <div class="mb-8 flex items-baseline justify-between gap-x-4">
+    <h1
+      class="font-inter text-3xl font-medium tracking-wide text-[#0f0f0f] md:text-5xl"
+    >
+      {heading}
+    </h1>
+    <p class="font-inter text-light-gray text-sm">{replyNote}</p>
+  </div>
+
+  <form id="contact-form" novalidate>
+    <div class="flex flex-col gap-y-5">
+      <FormInput
+        id="name"
+        name="name"
+        label={labelName}
+        required={true}
+        autocomplete="name"
+      />
+      <FormInput
+        id="email"
+        name="email"
+        type="email"
+        label={labelEmail}
+        required={true}
+        autocomplete="email"
+      />
+      <FormSelect
+        id="projectType"
+        name="projectType"
+        label={labelProjectType}
+        options={projectTypeOptions}
+      />
+      <FormSelect
+        id="location"
+        name="location"
+        label={labelLocation}
+        options={locationOptions}
+      />
+      <FormSelect
+        id="timeline"
+        name="timeline"
+        label={labelTimeline}
+        options={timelineOptions}
+      />
+      <FormSelect
+        id="budget"
+        name="budget"
+        label={labelBudget}
+        options={budgetOptions}
+      />
+      <FormSelect
+        id="language"
+        name="language"
+        label={labelLanguage}
+        options={languageOptions}
+      />
+
+      <FormTextarea
+        id="message"
+        name="message"
+        label={labelMessage}
+        required={true}
+      />
+
+      {/* Honeypot — hidden from humans */}
+      <input
+        name="company"
+        type="text"
+        tabindex="-1"
+        autocomplete="off"
+        aria-hidden="true"
+        style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"
+      />
+
+      {/* Submit */}
+      <div class="pt-2">
+        <div id="book" class="flex flex-wrap gap-x-4 gap-y-3">
+          <button type="submit" class="btn-primary" id="submit-btn">
+            {submit}
+          </button>
+          <CalButton calLink={calLink} label={bookCta} client:load />
+        </div>
+        <p
+          id="form-status"
+          role="status"
+          aria-live="polite"
+          class="font-inter text-light-gray mt-4 text-sm"
+        >
+        </p>
+      </div>
+    </div>
+  </form>
+
+  {/* Thank-you state */}
+  <div id="form-thank-you" hidden class="py-4">
+    <p class="font-inter mb-2 text-base font-medium text-[#0f0f0f]">
+      {thankyouHeading}
+    </p>
+    <p class="font-inter text-light-gray text-sm">
+      {thankyouBody}{' '}
+      If you'd rather talk sooner,{' '}
+      <a href="#book" class="underline underline-offset-2">{thankyouCta}</a>.
+    </p>
+  </div>
+</div>
+
+<script>
+  function initContactForm() {
+    const form = document.getElementById(
+      'contact-form',
+    ) as HTMLFormElement | null;
+    const statusEl = document.getElementById(
+      'form-status',
+    ) as HTMLParagraphElement | null;
+    const thankYouEl = document.getElementById(
+      'form-thank-you',
+    ) as HTMLDivElement | null;
+    const submitBtn = document.getElementById(
+      'submit-btn',
+    ) as HTMLButtonElement | null;
+
+    if (!form || !statusEl || !thankYouEl || !submitBtn) return;
+
+    // Reset state on each page load (handles view-transition revisits)
+    form.hidden = false;
+    thankYouEl.hidden = true;
+    statusEl.textContent = '';
+    submitBtn.disabled = false;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      statusEl.textContent = 'Sending\u2026';
+
+      const payload = Object.fromEntries(new FormData(form).entries());
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const data: { ok?: boolean; error?: string } = await res
+          .json()
+          .catch(() => ({}));
+
+        if (res.ok) {
+          form.reset();
+          form.hidden = true;
+          thankYouEl.hidden = false;
+          statusEl.textContent = '';
+        } else {
+          statusEl.textContent =
+            data.error ??
+            'Something didn\u2019t go through. Please email studio@heijostudio.com.';
+          submitBtn.disabled = false;
+        }
+      } catch {
+        statusEl.textContent =
+          'Something didn\u2019t go through. Please email studio@heijostudio.com.';
+        submitBtn.disabled = false;
+      }
+    });
+  }
+
+  document.addEventListener('astro:page-load', initContactForm);
+</script>

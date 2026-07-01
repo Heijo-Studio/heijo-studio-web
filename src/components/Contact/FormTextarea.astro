@@ -1,0 +1,26 @@
+---
+type Props = {
+  id: string;
+  name: string;
+  label: string;
+  required?: boolean;
+  rows?: number;
+};
+
+const { id, name, label, required = false, rows = 5 } = Astro.props;
+---
+
+<div>
+  <label
+    for={id}
+    class="font-inter text-light-gray mb-1.5 block text-xs tracking-widest uppercase"
+  >
+    {label}{required ? ' *' : ''}
+  </label>
+  <textarea
+    id={id}
+    name={name}
+    required={required}
+    rows={rows}
+    class="form-field resize-none"></textarea>
+</div>

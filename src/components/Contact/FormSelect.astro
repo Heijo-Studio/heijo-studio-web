@@ -1,0 +1,25 @@
+---
+type SelectOption = { value: string; label: string };
+
+type Props = {
+  id: string;
+  name: string;
+  label: string;
+  options: SelectOption[];
+  required?: boolean;
+};
+
+const { id, name, label, options, required = false } = Astro.props;
+---
+
+<div>
+  <label
+    for={id}
+    class="font-inter text-light-gray mb-1.5 block text-xs tracking-widest uppercase"
+  >
+    {label}{required ? ' *' : ''}
+  </label>
+  <select id={id} name={name} class="form-field">
+    {options.map((opt) => <option value={opt.value}>{opt.label}</option>)}
+  </select>
+</div>
