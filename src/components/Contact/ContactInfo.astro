@@ -1,0 +1,30 @@
+---
+import ImagePlaceholder from '@components/Contact/ImagePlaceholder.astro';
+
+type Props = {
+  imagePlaceholderLabel: string;
+  companyLocation: string;
+  companyEmail: string;
+  companyPhone: string;
+  companyAddress: string;
+};
+
+const {
+  imagePlaceholderLabel,
+  companyLocation,
+  companyEmail,
+  companyPhone,
+  companyAddress,
+} = Astro.props;
+---
+
+<aside class="md:col-span-5">
+  <ImagePlaceholder label={imagePlaceholderLabel} />
+
+  <div class="mt-10 flex flex-col gap-y-1.5">
+    <p class="font-inter text-light-gray text-sm">{companyLocation}</p>
+    <p class="font-inter text-light-gray text-sm">{companyEmail}</p>
+    <p class="font-inter text-light-gray text-sm">{companyPhone}</p>
+    <p class="font-inter text-light-gray text-sm">{companyAddress}</p>
+  </div>
+</aside>

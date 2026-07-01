@@ -1,0 +1,130 @@
+---
+import ContactInfo from '@components/Contact/ContactInfo.astro';
+import ContactForm from '@components/Contact/ContactForm.astro';
+import MainLayout from '@layouts/MainLayout.astro';
+
+const STRINGS = {
+  META_TITLE: 'Contact — Interior Design, Netherlands',
+  META_DESC:
+    'Talk to Heijo Studio about your home, renovation, or hospitality fit-out in the Netherlands. English-speaking. We reply within one business day.',
+
+  INTRO:
+    "Heijo Studio is an interior design studio in the Netherlands, and English is no problem. Maybe you've just bought a home and don't know where to start. Maybe you're opening a café and need it to work. Reach out early — a folder of screenshots is a fine place to begin.",
+
+  CAL_LINK: 'your-handle/intro',
+  BOOK_CTA: 'Book a 20-min call',
+  IMAGE_PLACEHOLDER_LABEL: 'Drop an architecture illustration or doodle',
+
+  FORM_HEADING: 'Send a message',
+  REPLY_NOTE: 'Reply within one business day',
+  LABEL_NAME: 'Name',
+  LABEL_EMAIL: 'Email',
+  LABEL_PROJECT_TYPE: 'Project type',
+  LABEL_LOCATION: 'Location',
+  LABEL_TIMELINE: 'Timeline',
+  LABEL_BUDGET: 'Budget (optional)',
+  LABEL_LANGUAGE: 'Reply in',
+  LABEL_MESSAGE: 'Tell us about your space',
+  SUBMIT: 'Send message',
+
+  PROJECT_TYPE_OPTIONS: [
+    { value: '', label: 'Select\u2026' },
+    {
+      value: 'Home interior or renovation',
+      label: 'Home interior or renovation',
+    },
+    {
+      value: 'Hospitality fit-out (café, restaurant, retail)',
+      label: 'Hospitality fit-out (café, restaurant, retail)',
+    },
+    { value: 'Something else', label: 'Something else' },
+  ],
+
+  LOCATION_OPTIONS: [
+    { value: '', label: 'Select\u2026' },
+    { value: 'Amstelveen', label: 'Amstelveen' },
+    { value: 'Den Haag', label: 'Den Haag' },
+    { value: 'Amsterdam', label: 'Amsterdam' },
+    { value: 'Rotterdam', label: 'Rotterdam' },
+    { value: 'Eindhoven', label: 'Eindhoven' },
+    {
+      value: 'Elsewhere in the Netherlands',
+      label: 'Elsewhere in the Netherlands',
+    },
+  ],
+
+  TIMELINE_OPTIONS: [
+    { value: '', label: 'Select\u2026' },
+    { value: 'Ready to start', label: 'Ready to start' },
+    { value: 'In 1\u20133 months', label: 'In 1\u20133 months' },
+    { value: 'In 3\u20136 months', label: 'In 3\u20136 months' },
+    { value: 'Just exploring', label: 'Just exploring' },
+  ],
+
+  BUDGET_OPTIONS: [
+    { value: '', label: 'Select\u2026' },
+    { value: 'Not sure yet', label: 'Not sure yet' },
+    { value: 'Up to \u20ac10k', label: 'Up to \u20ac10k' },
+    { value: '\u20ac10k\u2013\u20ac25k', label: '\u20ac10k\u2013\u20ac25k' },
+    { value: '\u20ac25k\u2013\u20ac50k', label: '\u20ac25k\u2013\u20ac50k' },
+    { value: '\u20ac50k+', label: '\u20ac50k+' },
+  ],
+
+  LANGUAGE_OPTIONS: [
+    { value: 'English', label: 'English' },
+    { value: '\u4e2d\u6587', label: '\u4e2d\u6587' },
+    { value: 'Nederlands', label: 'Nederlands' },
+  ],
+
+  COMPANY_LOCATION: 'The Netherlands',
+  COMPANY_EMAIL: 'info@heijostudio.com',
+  COMPANY_PHONE: 'NL +31 6XXXXXXX',
+  COMPANY_ADDRESS: 'Company Address',
+
+  THANK_YOU_HEADING: "Thanks \u2014 we've got your message.",
+  THANK_YOU_BODY: "We'll reply within one business day.",
+  THANK_YOU_CTA: 'book a call',
+};
+---
+
+<MainLayout title={STRINGS.META_TITLE} description={STRINGS.META_DESC}>
+  <main class="w-full flex-1">
+    <section class="container mx-auto px-4 py-16 md:px-8 md:py-24">
+      <div class="grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-28">
+        <div class="md:col-span-7">
+          <ContactForm
+            heading={STRINGS.FORM_HEADING}
+            replyNote={STRINGS.REPLY_NOTE}
+            labelName={STRINGS.LABEL_NAME}
+            labelEmail={STRINGS.LABEL_EMAIL}
+            labelProjectType={STRINGS.LABEL_PROJECT_TYPE}
+            labelLocation={STRINGS.LABEL_LOCATION}
+            labelTimeline={STRINGS.LABEL_TIMELINE}
+            labelBudget={STRINGS.LABEL_BUDGET}
+            labelLanguage={STRINGS.LABEL_LANGUAGE}
+            labelMessage={STRINGS.LABEL_MESSAGE}
+            submit={STRINGS.SUBMIT}
+            calLink={STRINGS.CAL_LINK}
+            bookCta={STRINGS.BOOK_CTA}
+            projectTypeOptions={STRINGS.PROJECT_TYPE_OPTIONS}
+            locationOptions={STRINGS.LOCATION_OPTIONS}
+            timelineOptions={STRINGS.TIMELINE_OPTIONS}
+            budgetOptions={STRINGS.BUDGET_OPTIONS}
+            languageOptions={STRINGS.LANGUAGE_OPTIONS}
+            thankyouHeading={STRINGS.THANK_YOU_HEADING}
+            thankyouBody={STRINGS.THANK_YOU_BODY}
+            thankyouCta={STRINGS.THANK_YOU_CTA}
+          />
+        </div>
+
+        <ContactInfo
+          imagePlaceholderLabel={STRINGS.IMAGE_PLACEHOLDER_LABEL}
+          companyLocation={STRINGS.COMPANY_LOCATION}
+          companyEmail={STRINGS.COMPANY_EMAIL}
+          companyPhone={STRINGS.COMPANY_PHONE}
+          companyAddress={STRINGS.COMPANY_ADDRESS}
+        />
+      </div>
+    </section>
+  </main>
+</MainLayout>

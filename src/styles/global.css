@@ -11,6 +11,76 @@
   --color-light-gray: #7b7b83;
 }
 
+/* Form */
+.form-field {
+  width: 100%;
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  color: #0f0f0f;
+  background: transparent;
+  border: 1px solid #c4c4c4;
+  padding: 0.625rem 0.875rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+  appearance: none;
+}
+
+.form-field::placeholder {
+  color: #7b7b83;
+}
+
+.form-field:focus {
+  border-color: #0f0f0f;
+  box-shadow: 0 0 0 1px #0f0f0f;
+}
+
+.form-field:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+select.form-field {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237b7b83' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.875rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  color: #7b7b83;
+  background: transparent;
+  border: 1px solid #c4c4c4;
+  padding: 0.5rem 1.5rem;
+  text-transform: lowercase;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+}
+
+.btn-primary:hover {
+  border-color: #7b7b83;
+  background-color: #7b7b83;
+  color: white;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary:disabled:hover {
+  border-color: #c4c4c4;
+  background-color: transparent;
+  color: #7b7b83;
+}
+
 /* Mobile menu grouped state styling using overlay + panel */
 :root {
   --menu-width: 75vw;

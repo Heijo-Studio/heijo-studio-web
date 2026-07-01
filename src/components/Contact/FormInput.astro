@@ -1,0 +1,43 @@
+---
+import type { HTMLInputTypeAttribute } from 'react';
+
+type Props = {
+  id: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  label: string;
+  autocomplete?: string;
+};
+
+const {
+  id,
+  name,
+  type = 'text',
+  required = false,
+  label,
+  autocomplete,
+} = Astro.props;
+
+const inputType = type as
+  | astroHTML.JSX.HTMLInputTypeAttribute
+  | null
+  | undefined;
+---
+
+<div>
+  <label
+    for={id}
+    class="font-inter text-light-gray mb-1.5 block text-xs tracking-widest uppercase"
+  >
+    {label}{required ? ' *' : ''}
+  </label>
+  <input
+    id={id}
+    name={name}
+    type={inputType}
+    required={required}
+    autocomplete={autocomplete}
+    class="form-field"
+  />
+</div>
